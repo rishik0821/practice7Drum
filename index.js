@@ -40,6 +40,7 @@ function nen() {
       console.log(buttonInnerHTML);
       break;
   }
+  buttonAnimation(buttonInnerHTML);
 }
 
 function makeSound(key) {
@@ -79,4 +80,13 @@ function makeSound(key) {
 // Add event listener for keypress to play sound
 document.addEventListener("keypress", function (event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
+}
